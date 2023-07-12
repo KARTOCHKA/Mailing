@@ -1,0 +1,3 @@
+Cброс пароля для электронной почты {{ email }}.
+Перейдите по ссылке ниже:
+{{ protocol }}://{{ domain }}{% url 'users:password_reset_confirm' uidb64=uid token=token %}

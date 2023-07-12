@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SkyChimp</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+{%include 'mailing/includes/inc_catalog_menu.html' %}
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% include 'mailing/includes/inc_catalog_footer.html' %}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

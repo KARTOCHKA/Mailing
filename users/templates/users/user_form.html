@@ -1,0 +1,22 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-6">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if not user.is_authenticated %}
+                        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-success">Сохранить</button>
+                    {% endif %}
+                </form>
+            </div>
+            <a href="{% url 'blog:home' %}" class="btn btn-secondary my-3"
+       style="background: #0062cc">Назад</a>
+        </div>
+    </div>
+{% endblock %}

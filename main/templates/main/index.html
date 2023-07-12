@@ -1,0 +1,56 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<div class="table">
+    <table>
+        <tr>
+            <td>
+                Количество рассылок всего
+            </td>
+            <td>
+                {{count_mailing}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Количество активных рассылок:
+            </td>
+            <td>
+                {{active_mailing}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Количество уникальных клиентов для рассылок:
+            </td>
+            <td>
+                {{unique_clients}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% load tags %}
+{% for post in random_post %}
+<div class="table">
+    <div class="row mb-2">
+        <div class="col-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <small class="text-muted">👁 {{ post.count_of_view }}</small>
+                    <h5 class="mb-0">
+                        <a class="text-dark">{{ post.title }}</a>
+                    </h5>
+                    <div class="mb-1 text-muted">{{ post.create_date }}</div>
+                    <p class="card-text mb-auto">{{ post.content | truncatechars:100 }}</p>
+                    <a href="{% url 'blog:blog_detail' post.slug %}">Подробнее</a>
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" src={% mediapath post.image %} width="250"
+                     height="200">
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

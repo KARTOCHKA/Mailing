@@ -1,0 +1,84 @@
+[
+  {
+    "model": "mailing.message",
+    "pk": 1,
+    "fields": {
+      "header": "Это рассылка",
+      "body": "привет, это рассылка от Картошечки"
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 1,
+    "fields": {
+      "time": "09:17:56",
+      "frequency": "DAY",
+      "status": "CREATE",
+      "user": 2,
+      "message": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 2,
+    "fields": {
+      "time": "13:22:00",
+      "frequency": "DAY",
+      "status": "CREATE",
+      "user": 1,
+      "message": 1,
+      "is_active": false
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 3,
+    "fields": {
+      "time": "13:22:00",
+      "frequency": "DAY",
+      "status": "CREATE",
+      "user": 2,
+      "message": 1,
+      "is_active": false
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$D5R2VEgE4WGMmP9HSSq46C$TK0jacF77Wwyh30kptXxGtNpke9GAHo8zacnhtb8ENo=",
+      "last_login": "2023-06-19T09:10:05.748Z",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-06-18T20:34:19.249Z",
+      "email": "admin@sky.ru",
+      "first_name": "Admin",
+      "last_name": "Adminovich",
+      "middle_name": null,
+      "message": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$HGtBua8pStdQl9HMoVmhyq$HvMpbIKRDdMVL5HtXH158U4dBO2dxH6Cr3Z4/eI9j+Y=",
+      "last_login": "2023-06-19T09:00:38.909Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-06-19T08:51:11.086Z",
+      "email": "kosareva.karina2013@yandex.ru",
+      "first_name": "Михаил",
+      "last_name": "Яценко",
+      "middle_name": "Романович",
+      "message": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

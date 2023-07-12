@@ -1,0 +1,17 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+
+    {% for post in post_list %}
+        {% include 'blog/includes/inc_post_card.html' %}
+    {% endfor %}
+
+<div class="container">
+
+    {% if perms.blog.add_post %}
+    <a href="{% url 'blog:blog_form' %}" class="btn btn-secondary my-3"
+       style="background: #0062cc">Создать</a>
+    {% endif %}
+
+</div>
+{% endblock %}
