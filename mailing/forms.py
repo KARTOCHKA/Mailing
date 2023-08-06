@@ -1,6 +1,6 @@
 from django import forms
 
-from mailing.models import Client, Mailing
+from mailing.models import Client, Mailing, Message
 
 
 class FormStyleMixin:
@@ -26,3 +26,9 @@ class MailingForm(FormStyleMixin, forms.ModelForm):
     class Meta:
         model = Mailing
         exclude = ('is_active', 'user', 'status', 'is_published')
+
+
+class MessageForm(FormStyleMixin, forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ('header', 'body')

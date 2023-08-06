@@ -1,11 +1,22 @@
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
-from mailing.forms import ClientForm, MailingForm
+from mailing.forms import ClientForm, MailingForm, MessageForm
 from mailing.models import *
 from mailing.services import MessageService, delete_task, send_mailing
+
+
+class MessageCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Message
+    form_class = MessageForm
+    #template_name = 'mailing:mailing_message_create'
+    success_url = reverse_lazy('mailing:mailing_list')  # Adjust this URL as needed
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class MailingListView(LoginRequiredMixin, generic.ListView):
