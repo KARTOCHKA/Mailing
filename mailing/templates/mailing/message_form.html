@@ -6,7 +6,9 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" class="btn btn-success" value="Сохранить">
+    <a href="{% url 'mailing:mailing_create' %}" class="btn btn-secondary my-3"
+       style="background: #0062cc">Создать рассылку</a>
     <a href="{% url 'mailing:mailing_list' %}" class="btn btn-secondary my-3"
-       style="background: #0062cc">Назад</a>
+       style="background: #0062cc">Главная</a>
 </form>
 {% endblock %}
