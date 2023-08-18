@@ -41,7 +41,6 @@ class EmailVerify(generic.View):
         user = self.get_user(uidb64)
 
         if user is not None and default_token_generator.check_token(user, token):
-            user.email_verify = True
             user.save()
             login(request, user)
             return redirect('users:login')
@@ -73,17 +72,6 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 
 class CustomPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'users/password_reset_done.html'
-
-    def form_valid(self, form):
-        if form.is_valid():
-            self.object = form.save()
-            if form.data.get('need_generate', False):
-                self.object.set_passeword(
-                    self.object.make_random_password(12)
-                )
-                self.object.save()
-
-        return super().form_valid(form)
 
 
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):

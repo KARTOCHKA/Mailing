@@ -145,16 +145,16 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
 # Celery settings
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', "redis://localhost:6379")
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', "redis://localhost:6379")
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
-# CACHE
-CACHE_ENABLED = os.getenv('CACHE_ENABLED') == True
+# CACHE SETTINGS
+CACHE_ENABLED = os.getenv('CACHE_ENABLED') is True
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",

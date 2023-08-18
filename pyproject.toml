@@ -16,6 +16,8 @@ redis = "^4.6.0"
 django-celery-beat = "^2.5.0"
 pillow = "^10.0.0"
 python-dotenv = "^1.0.0"
+flake8 = "^6.1.0"
+pytz = "^2023.3"
 
 
 [build-system]

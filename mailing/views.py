@@ -48,7 +48,7 @@ class MailingCreateView(LoginRequiredMixin, generic.CreateView):
         if user.is_staff or user.is_superuser:
             queryset = mailing
         else:
-            queryset = mailing.client.filter(user=user)
+            queryset = mailing.client.filter(user=user, is_active=True)
         return queryset
 
     def form_valid(self, form):

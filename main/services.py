@@ -13,4 +13,4 @@ def get_active_mailing():
 
 def get_unique_clients():
     """Возвращает количество уникальных клиентов для рассылок"""
-    return Client.objects.values('email').distinct().count()
+    return Client.objects.values('email').filter(is_active=True).distinct().count()

@@ -21,11 +21,6 @@ class Client(models.Model):
     def __str__(self):
         return f"{self.name} ({self.email})"
 
-    def delete(self, *args, **kwargs):
-        """Функция, делающая пользователя не активным"""
-        self.is_active = False
-        self.save()
-
 
 class Message(models.Model):
     """Модель сообщения для рассылки"""
