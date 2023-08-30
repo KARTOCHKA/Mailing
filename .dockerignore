@@ -1,1 +1,13 @@
 /venv
+.idea
+__pycache__
+config/__pycache__/
+mailing/__pycache__/
+users/__pycache__/
+config/__pycache__/settings.cpython-311.pyc
+blog/__pycache__/
+blog/templatetags/__pycache__/
+mailing/management/__pycache__/
+mailing/management/commands/__pycache__/
+main/__pycache__/
+users/services/__pycache__/email_send_verify.cpython-311.pyc

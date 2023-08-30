@@ -24,9 +24,11 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0', 'http://89.108.98.89', 'http://*', 'https://*']
 
 # Application definition
 
@@ -109,29 +111,23 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
-LANGUAGE_CODE = 'ru-ru'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'ru-RU'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Mailing', 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# Media
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -139,6 +135,7 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+# Email settings
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
@@ -155,7 +152,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
 
-# CACHE SETTINGS
+# CACHE settings
 CACHE_ENABLED = os.getenv('CACHE_ENABLED') is True
 CACHES = {
     "default": {

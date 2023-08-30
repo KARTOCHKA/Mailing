@@ -5,8 +5,7 @@ Deploy to prod:
   stage: deploy
   script:
     - cp $ENT_PROD .env
-    - bash deployment_script.sh
-  only:
-    - master
+    - docker-compose -f docker-compose.yml down
+    - docker-compose -f docker-compose.yml up -d --build
   tags:
-    - prod
+    - deploy
