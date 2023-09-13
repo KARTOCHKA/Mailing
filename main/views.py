@@ -8,7 +8,7 @@ class IndexView(TemplateView):
     """Представление главной страницы сервиса"""
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        all_posts = list(Post.objects.filter(is_active=True))
+        all_posts = list(Post.objects.filter(is_published=True))
         context['random_post'] = sample(all_posts, min(3, len(all_posts)))
         context['count_mailing'] = get_count_mailing()
         context['active_mailing'] = get_active_mailing()
