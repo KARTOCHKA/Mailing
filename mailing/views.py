@@ -11,7 +11,7 @@ from mailing.services import MessageService, delete_task, send_mailing
 class MessageCreateView(LoginRequiredMixin, generic.CreateView):
     model = Message
     form_class = MessageForm
-    #template_name = 'mailing:mailing_message_create'
+    template_name = 'mailing:mailing_message_create'
     success_url = reverse_lazy('mailing:mailing_list')  # Adjust this URL as needed
 
     def form_valid(self, form):
